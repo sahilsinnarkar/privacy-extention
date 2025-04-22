@@ -1,0 +1,39 @@
+# Node.js dependencies (if using npm for build tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# Compiled files and build artifacts
+dist/
+build/
+*.min.js
+*.map
+
+# Chrome extension cache and logs
+*.log
+*.crx
+*.pem
+manifest.zip
+
+# Temporary files
+.DS_Store
+Thumbs.db
+*.bak
+*.swp
+*.swo
+*.tmp
+
+# Ignore local environment or debug configurations
+.env
+.env.local
+.env.development
+.env.production
+
+# Ignore unnecessary assets
+assets/*.psd
+assets/*.ai
+assets/*.sketch

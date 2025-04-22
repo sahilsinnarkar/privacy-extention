@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Privacy Leak Detector",
+  "version": "1.2",
+  "description": "Advanced privacy protection for mobile apps",
+  "permissions": [
+    "storage",
+    "alarms",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "host_permissions": [
+    "*://play.google.com/*",
+    "*://*.google.com/*",
+    "*://*.facebook.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [{
+    "matches": ["*://play.google.com/store/apps/*"],
+    "js": ["content/content.js"],
+    "run_at": "document_idle"
+  }],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "48": "assets/risk-icon.png"
+    }
+  },
+  "icons": {
+    "48": "assets/risk-icon.png"
+  }
+}

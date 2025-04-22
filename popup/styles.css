@@ -1,0 +1,283 @@
+/* General Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  width: 380px;
+  min-height: 500px;
+  background-color: #f5f5f7;
+  color: #333;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  padding: 16px;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 16px 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #ddd;
+}
+
+h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+/* Header and Risk Badge */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.risk-badge {
+  padding: 8px 12px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.risk-level {
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.risk-high {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+.risk-medium {
+  background-color: #fff8e1;
+  color: #ff8f00;
+  border: 1px solid #ffe082;
+}
+
+.risk-low {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.risk-unknown {
+  background-color: #f5f5f5;
+  color: #757575;
+  border: 1px solid #bdbdbd;
+  padding: 8px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+}
+
+.risk-score, .risk-confidence {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+/* Permissions Section */
+.risk-meter {
+  background-color: #eeeeee;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.meter-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50 0%, #ffeb3b 50%, #f44336 100%);
+}
+
+.meter-text {
+  font-size: 12px;
+  color: #666;
+  display: block;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.permissions-list {
+  margin-top: 10px;
+}
+
+.permission-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.permission-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.permission-risk {
+  font-size: 12px;
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  margin-bottom: 4px;
+}
+
+.permission-reason {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.no-risks {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+/* Network Section */
+.warning-banner {
+  background-color: #fff3e0;
+  color: #e65100;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.requests-list {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.request-item {
+  background-color: white;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  font-size: 12px;
+}
+
+.domain {
+  font-weight: 600;
+  color: #d32f2f;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.full-url {
+  color: #616161;
+  font-size: 11px;
+  word-break: break-all;
+}
+
+/* Summary Section */
+.summary-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.recommendation {
+  background-color: #f5f5f5;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  text-align: center;
+}
+
+.stat-item {
+  background-color: #f5f5f7;
+  padding: 10px 6px;
+  border-radius: 6px;
+}
+
+.stat-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  display: block;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #757575;
+  margin-top: 2px;
+  display: block;
+}
+
+/* Error State */
+.error-state {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.error-state h2 {
+  margin-bottom: 12px;
+  border-bottom: none;
+}
+
+.error-state p {
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+#retry-btn {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#retry-btn:hover {
+  background-color: #0d47a1;
+}

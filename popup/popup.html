@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Privacy Leak Detector</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Privacy Report</h1>
+      <div id="risk-badge"></div>
+    </header>
+
+    <section class="permissions-section">
+      <h2>Permissions Analysis</h2>
+      <div id="permissions-container"></div>
+    </section>
+
+    <section class="network-section">
+      <h2>Network Activity</h2>
+      <div id="network-container"></div>
+    </section>
+
+    <section class="summary-section">
+      <h2>Risk Summary</h2>
+      <div id="summary-container"></div>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

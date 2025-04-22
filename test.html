@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Leak Detector - Test Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    h1 {
+      color: #333;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+    
+    .test-section {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #eee;
+      border-radius: 5px;
+    }
+    
+    .test-button {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .test-button:hover {
+      background-color: #3367d6;
+    }
+    
+    .result {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    
+    pre {
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <h1>Privacy Leak Detector - Test Page</h1>
+  
+  <div class="test-section">
+    <h2>Permissions Test</h2>
+    <button id="test-permissions" class="test-button">Test Permission Detection</button>
+    <div id="permissions-result" class="result">Results will appear here...</div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Network Requests Test</h2>
+    <button id="test-network" class="test-button">Test Network Detection</button>
+    <div id="network-result" class="result">Results will appear here...</div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Risk Classification Test</h2>
+    <button id="test-risk" class="test-button">Test Risk Classification</button>
+    <div id="risk-result" class="result">Results will appear here...</div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Manual Test Data</h2>
+    <div>
+      <label for="permissions-input">Permissions (comma separated):</label>
+      <input type="text" id="permissions-input" value="Location,Camera,Storage">
+    </div>
+    <div>
+      <label for="tracking-input">Tracking URLs (comma separated):</label>
+      <input type="text" id="tracking-input" value="facebook.com/tr,google-analytics.com/collect">
+    </div>
+    <button id="run-manual-test" class="test-button">Run Manual Test</button>
+    <div id="manual-result" class="result">Results will appear here...</div>
+  </div>
+
+  <script>
+    // Mock risk level classification
+    function mockProcessData(data) {
+      const permissionScore = data.permissions?.length * 10 || 0;
+      const networkScore = data.networkRequests?.length * 5 || 0;
+      const totalScore = Math.min(100, permissionScore + networkScore);
+      
+      return {
+        ...data,
+        classification: {
+          riskLevel: totalScore > 50 ? 'High' : totalScore > 25 ? 'Medium' : 'Low',
+          score: totalScore,
+          confidence: Math.min(95, totalScore + 30)
+        }
+      };
+    }
+
+    // Test permission detection
+    document.getElementById('test-permissions').addEventListener('click', () => {
+      const result = document.getElementById('permissions-result');
+      
+      // Mock permissions data
+      const mockPermissions = [
+        {permission: 'Location', risk: 9, reason: 'Tracks physical movements'},
+        {permission: 'Camera', risk: 8, reason: 'Potential visual surveillance'},
+        {permission: 'Storage', risk: 6, reason: 'Access to personal files'}
+      ];
+      
+      result.innerHTML = `
+        <h3>Mock Permission Detection:</h3>
+        <pre>${JSON.stringify(mockPermissions, null, 2)}</pre>
+      `;
+    });
+
+    // Test network detection
+    document.getElementById('test-network').addEventListener('click', () => {
+      const result = document.getElementById('network-result');
+      
+      // Mock network requests
+      const mockRequests = [
+        'https://www.facebook.com/tr?id=123456789',
+        'https://www.google-analytics.com/collect?v=1&tid=UA-12345-6',
+        'https://www.doubleclick.net/pixel?id=987654321'
+      ];
+      
+      result.innerHTML = `
+        <h3>Mock Network Detection:</h3>
+        <pre>${JSON.stringify(mockRequests, null, 2)}</pre>
+      `;
+    });
+
+    // Test risk classification
+    document.getElementById('test-risk').addEventListener('click', () => {
+      const result = document.getElementById('risk-result');
+      
+      // Mock data for processing
+      const mockData = {
+        permissions: [
+          {permission: 'Location', risk: 9, reason: 'Tracks physical movements'},
+          {permission: 'Camera', risk: 8, reason: 'Potential visual surveillance'}
+        ],
+        networkRequests: [
+          'https://www.facebook.com/tr?id=123456789',
+          'https://www.google-analytics.com/collect?v=1&tid=UA-12345-6'
+        ]
+      };
+      
+      const processed = mockProcessData(mockData);
+      
+      result.innerHTML = `
+        <h3>Mock Risk Classification:</h3>
+        <pre>${JSON.stringify(processed.classification, null, 2)}</pre>
+      `;
+    });
+
+    // Run manual test
+    document.getElementById('run-manual-test').addEventListener('click', () => {
+      const result = document.getElementById('manual-result');
+      const permissionsInput = document.getElementById('permissions-input').value;
+      const trackingInput = document.getElementById('tracking-input').value;
+      
+      const permissions = permissionsInput.split(',').map(p => {
+        const perm = p.trim();
+        return {
+          permission: perm,
+          risk: perm === 'Location' ? 9 : perm === 'Camera' ? 8 : perm === 'Microphone' ? 8 : 6,
+          reason: `Access to ${perm.toLowerCase()}`
+        };
+      });
+      
+      const networkRequests = trackingInput.split(',').map(t => `https://${t.trim()}`);
+      
+      const testData = {
+        permissions,
+        networkRequests
+      };
+      
+      const processed = mockProcessData(testData);
+      
+      result.innerHTML = `
+        <h3>Manual Test Results:</h3>
+        <pre>${JSON.stringify(processed, null, 2)}</pre>
+      `;
+    });
+  </script>
+</body>
+</html>
