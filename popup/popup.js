@@ -106,6 +106,23 @@ function renderSummary(data) {
       </div>
     </div>
   `;
+
+  // Add AI explanation section
+  const aiExplanation = document.createElement('div');
+  aiExplanation.className = 'ai-explanation';
+  aiExplanation.innerHTML = `
+    <h4>AI Risk Analysis</h4>
+    <p>Our AI has analyzed this app's permissions, network activity, and behavior patterns.</p>
+    <p>Key risk factors:</p>
+    <ul>
+      ${data.permissions.detected.map(p => 
+        `<li>${p.permission} - ${p.reason}</li>`
+      ).join('')}
+      ${data.networkRequests.length > 0 ? 
+        `<li>Detected ${data.networkRequests.length} tracking connections</li>` : ''}
+    </ul>
+  `;
+  container.appendChild(aiExplanation);
 }
 
 function getRecommendation(riskLevel) {

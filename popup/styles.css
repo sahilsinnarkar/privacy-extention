@@ -281,3 +281,32 @@ header {
 #retry-btn:hover {
   background-color: #0d47a1;
 }
+#ai-badge {
+  background-color: #8c43ff;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+/* Add to styles.css */
+.ai-explanation {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f0f0ff;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.ai-explanation h4 {
+  color: #8c43ff;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.ai-explanation ul {
+  margin-top: 5px;
+  padding-left: 20px;
+}
