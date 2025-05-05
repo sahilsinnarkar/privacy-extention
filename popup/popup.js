@@ -37,26 +37,26 @@ function renderRiskBadge(classification) {
 function renderPermissions(permissions) {
   const container = document.getElementById('permissions-container');
   if (!permissions || !permissions.detected.length) {
-      container.innerHTML = '<p class="no-risks">No risky permissions detected</p>';
-      return;
+    container.innerHTML = '<p class="no-risks">No risky permissions detected</p>';
+    return;
   }
 
   container.innerHTML = `
-    <div class="risk-meter">
-      <div class="meter-bar" style="width: ${Math.min(100, permissions.totalRisk)}%"></div>
-      <span class="meter-text">Total Permission Risk: ${permissions.totalRisk}</span>
-    </div>
     <div class="permissions-list">
       ${permissions.detected.map(perm => `
         <div class="permission-item">
-          <span class="permission-name">${perm.permission}</span>
-          <span class="permission-risk">Risk: ${perm.risk}/10</span>
+          <div class="permission-header">
+            <span class="permission-name">${perm.permission}</span>
+            <span class="permission-risk">Risk: ${perm.risk}/10</span>
+          </div>
           <p class="permission-reason">${perm.reason}</p>
+          <p class="permission-explanation">${perm.nlExplanation}</p>
         </div>
       `).join('')}
     </div>
   `;
 }
+
 
 function renderNetworkRequests(requests) {
   const container = document.getElementById('network-container');
@@ -83,6 +83,7 @@ function renderNetworkRequests(requests) {
 function renderSummary(data) {
   const container = document.getElementById('summary-container');
   const { classification, permissions, networkRequests } = data;
+  
 
   container.innerHTML = `
     <div class="summary-card">

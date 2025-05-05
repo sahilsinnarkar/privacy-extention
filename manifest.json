@@ -6,16 +6,16 @@
   "permissions": [
     "storage",
     "alarms",
-    "declarativeNetRequestWithHostAccess"
+    "declarativeNetRequest"
   ],
   "host_permissions": [
     "*://play.google.com/*",
     "*://*.google.com/*",
     "*://*.facebook.com/*"
   ],
+  "options_page": "popup/options.html",
   "background": {
-    "service_worker": "background.js",
-    "type": "module"
+    "service_worker": "background.js"
   },
   "content_scripts": [{
     "matches": ["*://play.google.com/store/apps/*"],
@@ -30,5 +30,14 @@
   },
   "icons": {
     "48": "assets/risk-icon.png"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
   }
 }
