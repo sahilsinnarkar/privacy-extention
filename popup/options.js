@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('apiKey');
     const btn = document.getElementById('save');
   
-    // Load existing
     chrome.storage.sync.get('geminiKey', ({ geminiKey }) => {
       if (geminiKey) input.value = geminiKey;
     });

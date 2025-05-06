@@ -51,7 +51,6 @@ function analyzeNetworkRequests() {
   }
 }
 
-// Main execution with retry logic
 function initialize() {
   let retries = 0;
   const maxRetries = 3;
@@ -84,15 +83,12 @@ function initialize() {
 
   runAnalysis();
 
-  // Create debounced version for mutation observer
   const debouncedAnalysis = debounce(runAnalysis, 1000);
 
-  // Use debounced function with MutationObserver
   const observer = new MutationObserver(debouncedAnalysis);
   observer.observe(document.body, { childList: true, subtree: true, attributes: false, characterData: false, });
 }
 
-// Start analysis after DOM content loads
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initialize);
 } else {

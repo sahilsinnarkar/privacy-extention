@@ -108,7 +108,7 @@ function renderSummary(data) {
     </div>
   `;
 
-  // Add AI explanation section
+  // AI explanation section
   const aiExplanation = document.createElement('div');
   aiExplanation.className = 'ai-explanation';
   aiExplanation.innerHTML = `
